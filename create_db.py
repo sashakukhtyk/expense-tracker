@@ -1,3 +1,6 @@
+"""
+This is a file that configures db
+"""
 import sqlite3
 
 
