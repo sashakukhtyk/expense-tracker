@@ -49,7 +49,8 @@ while True:
         price = input("Enter the price of your expense: ")
 
         # Storing everything into db
-        cur.execute("INSERT INTO expenses (Date, description, category, price) VALUES (?, ?, ?, ?)", (date, description, category, price))
+        cur.execute("INSERT INTO expenses (Date, description, category, price) "
+                    "VALUES (?, ?, ?, ?)", (date, description, category, price))
         conn.commit()
 
     # This is the option to view previous expenses
@@ -59,6 +60,28 @@ while True:
         print("1. View expenses summary")
         print("2. View monthly expenses by category")
 
+        view_choice = int(input())
+
+        if view_choice == 1:
+            # View all the expenses
+            cur.execute("SELECT * FROM expenses")
+            expenses = cur.fetchall()
+            for expense in expenses:
+                print(expense)
+
+        elif view_choice == 2:
+            # View expense by month and by category
+            month = input("Enter the month of your expense (MM): ")
+            year = input("Enter the year of your expense (YYYY): ")
+            cur.execute("SELECT category, SUM(price) FROM expenses "
+                        "WHERE strftime('%m', Date) = ? AND strftime('%Y', Date) = ?"
+                        "GROUP BY category", (month, year))
+            expenses = cur.fetchall()
+
+            for expense in expenses:
+                print(f"Category: {expense[0]}, Total: {expense[1]}")
+        else:
+            exit()
 
     else:
         exit()
