@@ -37,7 +37,13 @@ while True:
             category = input("Enter the name of the category: ")
         # Selecting a previous category
         else:
-            category = categories[category_choice - 1][0]
+            while True:
+                # Error checking part
+                if category_choice < len(categories):
+                    category = categories[category_choice - 1][0]
+                    break
+                else:
+                    print("Please enter a valid category")
 
     elif choice == 2:
         pass
