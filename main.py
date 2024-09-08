@@ -39,7 +39,7 @@ while True:
         else:
             while True:
                 # Error checking part
-                if 0 < category_choice < len(categories):
+                if 0 < category_choice <= len(categories):
                     category = categories[category_choice - 1][0]
                     break
                 else:
