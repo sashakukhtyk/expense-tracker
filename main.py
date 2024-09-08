@@ -45,6 +45,12 @@ while True:
                 else:
                     print("Please enter a valid category")
 
+        # Entering the price of the expense
+        price = input("Enter the price of your expense: ")
+
+        # Storing everything into db
+        cur.execute("INSERT INTO expenses (Date, description, category, price) VALUES (?, ?, ?, ?)", (date, description, category, price))
+
     elif choice == 2:
         pass
     else:
