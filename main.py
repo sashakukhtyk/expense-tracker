@@ -89,6 +89,8 @@ while True:
     # Check if user wants to go on with the program
     repeat = input("Would you like to do smth else (y/n)?\n")
     if repeat.lower() == "y":
+        continue
+    else:
         break
 
 # Close the connection with db
