@@ -54,6 +54,11 @@ while True:
 
     # This is the option to view previous expenses
     elif choice == 2:
-        pass
+        # Options of the view description
+        print("Select an option by number:")
+        print("1. View expenses summary")
+        print("2. View monthly expenses by category")
+
+
     else:
         exit()
