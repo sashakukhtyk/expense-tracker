@@ -15,7 +15,7 @@ while True:
 
     choice = int(input())
 
-
+    # This is the option to add the new expense
     if choice == 1:
         # Input the date and description
         date = input("Enter the date of your expense: (YYYY-MM-DD)")
@@ -50,7 +50,9 @@ while True:
 
         # Storing everything into db
         cur.execute("INSERT INTO expenses (Date, description, category, price) VALUES (?, ?, ?, ?)", (date, description, category, price))
+        conn.commit()
 
+    # This is the option to view previous expenses
     elif choice == 2:
         pass
     else:
